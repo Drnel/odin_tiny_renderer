@@ -27,6 +27,9 @@ free_image_data :: proc(image: Image) {
 }
 
 set_pixel :: proc(image: Image, x: int, y: int,color :Color) {
+    if x < 0 || y < 0 || x >= image.width || y >= image.height {
+        return
+    }
     image.data[x + (y * image.width)].rgba = color.bgra
 }
 
